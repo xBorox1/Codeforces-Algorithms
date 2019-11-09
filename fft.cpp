@@ -38,10 +38,11 @@ CI FFT(CI &A, bool num) {
 	logn--;
 
 	CI B = {};
+	B.resize(n);
 
 	for(int i=0;i<n;i++) {
 		int rev = bit_reverse(i, logn);
-		B.pb(A[rev]);
+		B[i] = A[rev];
 	}
 
 	for(int s=1;s<=logn;s++) {
@@ -64,8 +65,8 @@ CI FFT(CI &A, bool num) {
 	return B;
 }
 
-CI to_size(CI &A, int size) {
-	while(size != A.size()) A.pb(ll(0));
+CI &to_size(CI &A, int size) {
+	A.resize(size);
 	return A;
 }
 
@@ -103,5 +104,9 @@ VI operator *(VI &A, VI &B) {
 
 int main()
 {
+	VI A = {1, 2};
+	VI B = {1, 3};
+	VI C = A * B;
+	for(auto x : C) cout<<x<<" ";
 	return 0;
 }

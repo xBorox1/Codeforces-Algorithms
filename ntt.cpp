@@ -37,10 +37,11 @@ VI NTT(VI &A, bool num) {
 	logn--;
 
 	VI B = {};
+	B.resize(n);
 
 	for(int i=0;i<n;i++) {
 		int rev = bit_reverse(i, logn);
-		B.pb(A[rev]);
+		B[i] = A[rev];
 	}
 
 	for(int s=1;s<=logn;s++) {
@@ -66,8 +67,8 @@ VI NTT(VI &A, bool num) {
 	return B;
 }
 
-VI to_size(VI &A, int size) {
-	while(size != A.size()) A.pb(0);
+VI &to_size(VI &A, int size) {
+	A.resize(size);
 	return A;
 }
 
