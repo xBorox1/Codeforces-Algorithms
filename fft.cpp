@@ -99,6 +99,8 @@ VI operator *(VI &A, VI &B) {
 	C.resize(size);
 	for(int i=0;i<size;i++) C[i] = round(CC[i].x / t);
 
+	while(C.back() == 0) C.pop_back();
+
 	return C;
 }
 
